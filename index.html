@@ -8,14 +8,45 @@
     <link rel="stylesheet" href="styles.css" type="text/css">    
   </head>
   <body>
-     <!-- container that has most of the applications components-->
-    <div class="container">
-
       <h1>Music App</h1>
 
-
-
-    </div>
+     <!-- container that has most of the applications components-->
+			<div class = "container">
+        <form name="form1" id="form1" action="">
+          Artists: <select name="artists" id="artistslist">
+            <option value="" selected="selected">Find Artist</option>
+          </select>
+        <form name="form1" id="form1" action="">
+          Albums: <select name="artists" id="artistslist">
+            <option value="" selected="selected">Find Albums</option>
+          </select>
+				<!-- Form Begins -->
+				<form>
+				   <input type="text" placeholder=" Enter Artist name" id="searchbar"/>
+				   <button class="btn" type="button" onclick="sendRequest()" > Search</button>
+				   <button class="btn" type= "refresh"> Reset</button>
+				</form>
+				<!-- Form Ends -->
+				
+				<div class = "music-box">
+					<strong>Artist Information and Biography:</strong>
+					<div id="output1"></div>
+				</div>
+		
+		
+				<div class = "music-box">
+					<strong>Top 10 Albums:</strong>
+					<div id="output2"></div>
+				</div> 
+		
+								
+				<div class = "music-box" >
+					<strong>Upcoming 10 Events:</strong>
+					<div id="output3"></div>
+				</div>
+		
+			</div>
+    
     <!-- My javascript -->
     <script type="text/javascript" src="app.js"></script>
 
