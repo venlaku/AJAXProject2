@@ -1,0 +1,222 @@
+/*backgroud settings*/
+body {
+    background: rgb(25, 25, 33);
+    color: rgb(233, 233, 233);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  
+  /*container that has most of the app components*/
+  .container {
+    display: block;
+    margin: 5px auto 0;
+    text-align: center;
+    width: 80%;
+    border: solid rgb(57, 58, 57) 2px;
+    background: rgb(12, 12, 13);
+    background: linear-gradient(
+      90deg,
+      rgba(12, 12, 13, 1) 0%,
+      rgba(46, 46, 61, 1) 48%,
+      rgba(12, 12, 13, 1) 100%
+    );
+    padding-bottom: 10px;
+  }
+  /*Main title in the header*/
+  h1 {
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+    font-size: 25px;
+    padding: 0px 0 10px;
+    text-align: center;
+  }
+  /*second title*/
+  h2 {
+    font-size: 20px;
+    border-bottom: 6px double rgb(59, 59, 59);
+    padding: 10px 0px 5px;
+  }
+  /*task counter settings*/
+  #taskCounter {
+    font-size: 14px;
+    margin-top: 20px;
+    position: static;
+  }
+  /*Icon picture placement*/
+  #iconPicture {
+    margin-top: 30px;
+  }
+  /*input settings when input is normal*/
+  input {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
+    height: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(94, 94, 94);
+    background: #fff;
+    border-radius: 2px;
+    color: #888;
+    width: 70%;
+  }
+  /*when users has clicked input to add some text*/
+  input:focus {
+    color: #333;
+    background-color: rgb(235, 235, 235);
+  }
+  /*inputs default text settings*/
+  input.placeholder {
+    color: lightgray;
+  }
+  /*contains both input and addbtn*/
+  .forminput {
+    box-sizing: border-box;
+    margin-right: 5%;
+  }
+  /*addbtn settings when button is untouched*/
+  .forminput #addBtn {
+    display: inline-block;
+    border-radius: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ffffff;
+    font-size: 24px;
+    background: #5b9163;
+    padding: 3.5px 8px;
+    border: solid #096e27 1px;
+    position: absolute;
+    height: max-content;
+    margin-left: 3px;
+  }
+  /*when user is hovering addbtn*/
+  #addBtn:hover {
+    background: #59c96e;
+    color: rgb(255, 255, 255);
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  /*list items settings*/
+  li {
+    overflow: hidden;
+    padding: 5px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 10px;
+    background-color: rgb(228, 228, 228);
+    color: black;
+    border: 1px solid rgb(163, 163, 163);
+  }
+  /*whole list settings when hovering list items*/
+  ul :hover {
+    background-color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  /*whole list settings*/
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  /*tasksDone lists settings*/
+  #tasksDone {
+    text-decoration: line-through;
+    text-decoration-color: black;
+    text-decoration-thickness: 2px;
+  }
+  /*tasksdone items are hovered*/
+  #tasksDone :hover {
+    background-color: rgb(29, 29, 29);
+  }
+  /*tasksdone list items are hovered (only the text not the whole box)*/
+  #tasksDone li :hover {
+    background-color: rgb(29, 29, 29);
+  }
+  /*tasksdone list items (only the text not the whole box)*/
+  #tasksDone li {
+    background-color: rgb(26, 26, 26);
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(231, 231, 231);
+  }
+  /*cursor changes when list items are hovered*/
+  li:hover {
+    cursor: pointer;
+  }
+  
+  .wrapper {
+    text-align: center;
+  }
+  /*removebtn settings*/
+  .removeBtn {
+    margin-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #dddcdc;
+    font-size: 12px;
+    background: #34363b;
+    padding: 7px;
+    border: solid #000000 1px;
+    border-radius: 3px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  /*removebtn hovering*/
+  .removeBtn:hover {
+    background: #202020;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: translateY(1px);
+    border: solid #c4c4c4 1px;
+  }
+  /*listitems delete button*/
+  li .delete {
+    float: right;
+    background-color: #cf594e;
+    border: 1px solid #911d13;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 12px;
+    text-shadow: 0px 1px 0px #810e05;
+    border-radius: 3px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+  /*tasksTodo listitems delete button when hovered*/
+  li .delete:hover {
+    background-color: #8a0a01;
+    border: 1px solid #ffffff;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  /*tasksDone listitems delete button when hovered*/
+  #tasksDone li .delete:hover {
+    background-color: #8a0a01;
+    border: 1px solid #242424;
+  }
+  /*showbtn settings*/
+  .showBtn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ffffff;
+    font-size: 12px;
+    background: #4e515a;
+    padding: 7px;
+    border: solid #222222 1px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.171);
+  }
+  /*active showbtn settings*/
+  .active,
+  .showBtn:hover {
+    background: #202020;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: solid #c4c4c4 1px;
+    transform: translateY(1px);
+  }
+  /*showbtn containing wrapper*/
+  .wrapper-show {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  

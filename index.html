@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music App</title>
+     <!-- wanted to change favicon. Same icon is used later -->
+    <link rel="shortcut icon" type="image/png" href="""/>
+  <!-- my css stylesheet -->
+    <link rel="stylesheet" href="stylest.css" type="text/css">    
+  </head>
+  <body>
+     <!-- container that has most of the applications components-->
+    <div class="container">
+
+      <h1>My task list</h1>
+        <!-- Input to place tasks -->
+        <div class="forminput">
+        <input type="text" id="newTask" placeholder="Write your tasks here...">
+        <button id=addBtn onclick="addTodo()">+</button>
+        </div>
+        <h2>Tasks to do</h2>
+         <!-- Wrapper for show buttons that can filter showed tasks. All-button is active on default when application is opened -->
+        <div id="wrapper-show">     
+          <button class="showBtn active" onclick="showAll()">All</button>
+          <button class="showBtn" onclick="showActive()">Active</button>
+          <button class="showBtn" onclick="showCompleted()">Done</button>
+        </div>
+         <!-- Two lists that contain tasks -->
+        <ul id="tasksTodo">
+        </ul>
+        <ul id="tasksDone">
+        </ul>
+         <!-- Task counter that counts active tasks -->
+        <div id="taskCounter"> </div>
+    </div>
+     <!-- wrapper for remove buttons -->
+    <div class="wrapper">     
+      <button class=removeBtn onclick="removeDone()">Remove Completed</button>
+      <button class=removeBtn onclick="removeAll()">Remove All</button>
+    </div>
+    <!-- My javascript -->
+    <script type="text/javascript" src="app.js"></script>
+
+  </body>
+</html>
