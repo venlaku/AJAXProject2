@@ -1,15 +1,15 @@
 /*backgroud settings*/
 body {
   background: rgb(245, 245, 245);
-  color: rgb(0, 0, 0);
+  color: rgb(10, 10, 10);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 header {
   width: 100%;
   position: fixed;        
-  background: rgb(157, 157, 157);
+  background: rgb(50, 49, 55);
   padding: 10px 0;
-  color: #fff;
+
   top: 0;
   right: 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -42,7 +42,7 @@ header {
 }
   /*Main title in the header*/
 h1 {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-weight: 800;
   font-size: 25px;
   padding: 0px 0 10px;
@@ -77,13 +77,14 @@ input.placeholder {
 .column {
   float: left;
   position: sticky;
-  width: 30%;
+  width: 28%;
   background-color: rgb(36, 36, 36);
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin-top: 50px;
-  padding: 10px;
-  margin-right: 1%;
+  padding: 15px;
+  margin-left: 1%;
+  
 }
 
 /* Clear floats after the columns */
@@ -105,4 +106,9 @@ input.placeholder {
   margin-top: 10px;
   width: 10%;
   color: rgb(55, 55, 55);
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
 }
