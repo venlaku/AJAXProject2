@@ -69,7 +69,7 @@ function sendRequest() {
 	var methodalbums = "artist.getAlbums";
 	getAlbum.onreadystatechange = showResult;
 	var artist = document.getElementById("searchbar").value;
-	getAlbum.open("GET",host+"?method="+methodalbums+"&artist="+artist+ "&api_key="+ apiKey + "&format=json",true);
+	getAlbum.open("GET",host+"?method="+methodalbums+"&artist="+artist+"&api_key="+apiKey+"&format=json",true);
 	getAlbum.withCredentials = "true";
 	getAlbum.send();
 	
