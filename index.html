@@ -4,42 +4,41 @@
     <title>Music App</title>
      <!-- wanted to change favicon. Same icon is used later -->
     <link rel="shortcut icon" type="image/png" href="icons8-musical-notes-80.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- my css stylesheet -->
     <link rel="stylesheet" href="styles.css" type="text/css">    
   </head>
   <body>
+    <header>
       <h1>Music App</h1>
+    </header>
+
 
      <!-- container that has most of the applications components-->
 			<div class = "container">
-        <form name="form1" id="form1" action="">
-          Artists: <select name="artists" id="artistslist">
-            <option value="" selected="selected">Find Artist</option>
-          </select>
-        <form name="form1" id="form1" action="">
-          Albums: <select name="artists" id="artistslist">
-            <option value="" selected="selected">Find Albums</option>
-          </select>
-				<!-- Form Begins -->
-				<form>
-				   <input type="text" placeholder=" Enter Artist name" id="searchbar"/>
-				   <button class="btn" type="button" onclick="sendRequest()" > Search</button>
-				   <button class="btn" type= "refresh"> Reset</button>
-				</form>
-				<!-- Form Ends -->
+        <form>
+          <input type="text" placeholder=" Enter Artist name" id="searchbar"/>
+          <button class="btn" type="button" onclick="sendRequest()"> <i class="fa fa-search"></i></button>
+        </form>
+
+        <div class ="row">
+        <div class = "column">
+          <strong>List of Artists:</strong>
+          <div id="artists"></div>
+        </div>
 				
-				<div class = "music-box">
+				<div class = "column">
 					<strong>Artist Information and Biography:</strong>
 					<div id="artist-info"></div>
 				</div>
 		
 		
-				<div class = "music-box">
+				<div class = "column">
 					<strong>Albums:</strong>
 					<div id="album"></div>
-				</div> 
-		
+				</div> 		
 			</div>
+    </div>
     
     <!-- My javascript -->
     <script type="text/javascript" src="app.js"></script>
