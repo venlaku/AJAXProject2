@@ -22,7 +22,7 @@ function showResult () {
     if (getArtist.readyState == 4)
 	{
 		var json = JSON.parse(getArtist.responseText);
-		//getting artist name
+		//getting artist 
 		var resultName = "Artist Name: "+ json.artist.name;
 		//artist bibliography
 		var resultBibliography = "Biography:"+json.artist.bio.summary+"Debut Place: "
@@ -31,9 +31,7 @@ function showResult () {
         document.getElementById("artist-info").innerHTML = "<ul>"+resultName+"</ul>"+"<ul>"+"<ul>"+resultBibliography+"</ul>";
 	}
 	//albums of the artist
-	if (getArtist.readyState == 4)
-	
-	{
+	if (getArtist.readyState == 4) {
         var json = JSON.parse(getArtist.responseText);
 		//album variant
 		var albumName = new Array();
@@ -42,24 +40,22 @@ function showResult () {
 		while (i<10)
 		{					
 			albumName[i] = "<li>"+json.topalbums+"</li>";			
-							i++;
-		}
-		
+			i++;
+		}	
 		document.getElementById("album").innerHTML = "<ul>"+albumName+"</ul>";		
     }
-
 }
 
 function artistList(){
-	if (getArtist.readyState == 4)
-	{
 	var json = JSON.parse(getArtist.responseText);
 	var artistsNames= json.artist.name;
 	//results to artists as a list
 	document.getElementById("artists").innerHTML = "<li>"+artistsNames+"</li>";
-	}
+	var methodartistsurl = "artist.getinfo";
+	getArtist.onreadystatechange = showResult;
+	getArtist.open("GET",host+"?method="+methodartistsurl+"&artist="+artist+"&api_key="+apiKey+"&format=json",true);
+	getArtist.send();
 }
-
 
 function sendRequest() {
 
@@ -69,17 +65,10 @@ function sendRequest() {
     getArtist.open("GET",host+"?method="+methodartist+"&artist="+artist+ "&api_key="+ apiKey + "&format=json",true);
     getArtist.send();
 	
-
 	var methodalbums = "artist.gettopalbums";
-	getAlbum.onreadystatechange = showResult;
+	getArtist.onreadystatechange = showResult;
 	var artist = document.getElementById("searchbar").value;
 	var album = '';
-	getAlbum.open("GET",host+"?method="+methodalbums+"&artist="+artist+"&album="+album+"&api_key="+apiKey+"&format=json",true);
-	getAlbum.send();
-
-	var methodartistsurl = "artist.getinfo";
-	getArtist.onreadystatechange = showResult;
-	getAlbum.open("GET",host+"?method="+methodartistsurl+"&artist="+artist+"&api_key="+apiKey+"&format=json",true);
-	getAlbum.send();
-	
+	getArtist.open("GET",host+"?method="+methodalbums+"&artist="+artist+"&album="+album+"&api_key="+apiKey+"&format=json",true);
+	getArtist.send();	
 }
