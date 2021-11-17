@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Music App</title>
+    <title>Artist Info</title>
      <!-- wanted to change favicon. Same icon is used later -->
     <link rel="shortcut icon" type="image/png" href="icons8-musical-notes-40.png"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,19 +11,19 @@
   </head>
   <body>
     <header>
-      <h1>Music App</h1>
+      <h1>Artist Info</h1>
     </header>
 
     <div class = "sidecolumn">
-      <h2>List of Artists</h2>
+      <h2>Top 50 Artists</h2>
       <div id="artists"></div>
     </div>
 
      <!-- container that has most of the applications components-->
 			<div class = "container">
-        <form>
-          <input type="text" placeholder=" Enter artist name" id="searchbar"/>
-          <button id="btn" type="button" onclick="sendRequest()"> <i class="fa fa-search"></i></button>
+        <form onsubmit="return sendRequest(event)">
+          <input type="text" placeholder="Enter artist name" id="searchbar"/>
+          <button id="btn" type="submit"> <i class="fa fa-search"></i></button>
         </form>
 
         <div class ="row">
@@ -35,7 +35,7 @@
 		
 		
 				<div class = "column">
-					<strong>Albums</strong>
+					<strong>Top 10 Albums</strong>
 					<div id="album"></div>
 				</div> 		
 			</div>

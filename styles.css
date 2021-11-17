@@ -33,13 +33,14 @@ header {
   display: block;
   margin: 5px auto 0;
   text-align: center;
-  width: 80%;
+  width: 85%;
   background: rgb(255, 255, 255);
   padding-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 20px;
   margin-top: 150px;
-  margin-left: 15%;
+  margin-left: 11%;
+  margin-right: 7px;
 }
   /*Main title in the header*/
 h1 {
@@ -114,7 +115,6 @@ input.placeholder {
   padding-top: 60px;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
@@ -150,3 +150,4 @@ input.placeholder {
     width: 15%;
   }
 }
+
