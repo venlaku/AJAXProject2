@@ -13,14 +13,15 @@ var getAlbumSongs = new XMLHttpRequest();
 function showResult () {
     if (getArtist.readyState == 4 && getArtist.status==200)
 	{
-		var json = JSON.parse(getArtist.responseText);
+		document.getElementById("album-song").innerHTML = ('');
+		var jsonArtist = JSON.parse(getArtist.responseText);
 		//getting artist 
-		var resultName = "<strong>"+json.artist.name+"</strong>";
-		var resultBibliography = "<br/>"+"<br/>"+json.artist.bio.summary;
+		var resultName = "<strong>"+jsonArtist.artist.name+"</strong>";
+		var resultBibliography = "<br/>"+"<br/>"+jsonArtist.artist.bio.summary;
 		//lastfm does not provide pictures anymore this returns a star picture. Just adding here to let know I know how to get pictures from api
-		var image = json.artist.image[2]["#text"];
+		var image = jsonArtist.artist.image[2]["#text"];
 		//fetching images from musicbrainz by using mbid provided by lastfm api code from https://github.com/hugovk/now-playing-radiator/blob/master/js/lastfm.js
-		const mbid = json.artist.mbid;
+		const mbid = jsonArtist.artist.mbid;
 		if (mbid) {
 		   const url = 'https://musicbrainz.org/ws/2/artist/' + mbid + '?inc=url-rels&fmt=json';
 			fetch(url)
@@ -46,15 +47,15 @@ function showResult () {
 	}
 	//albums of the artist
 	if (getAlbum.readyState == 4 && getAlbum.status==200) {
-        var json = JSON.parse(getAlbum.responseText);
+        var jsonAlbum = JSON.parse(getAlbum.responseText);
 		//album variant
 		var albumName = new Array();
 		var i=0;
 		//getting albums of the artist
-		for (var i=0; i < json.topalbums.album.length; i++)
+		for (var i=0; i < jsonAlbum.topalbums.album.length; i++)
 		{
 			//giving onclick for album name that uses searchalbum function					
-			albumName[i] = `<li onclick="searchAlbum('${json.topalbums.album[i].name}')">${json.topalbums.album[i].name}</li>`;			
+			albumName[i] = `<li onclick="searchAlbum('${jsonAlbum.topalbums.album[i].name}', '${jsonAlbum.topalbums.album[i].artist.name}')">${jsonAlbum.topalbums.album[i].name}</li>`;			
 		}
 		//list of albumnames	
 		document.getElementById("album").innerHTML = albumName.join('');		
@@ -64,12 +65,12 @@ function showResult () {
 //function to get top50 artists as list. List items can be clicked so that info of the artist opens
 function getAllArtists() {
 	if (getTopArtists.readyState == 4 && getTopArtists.status==200) {
-		var json = JSON.parse(getTopArtists.responseText);
+		var jsonTopArtist = JSON.parse(getTopArtists.responseText);
 		var artistsNames= new Array();
 		// //results to artists as a list
-		 for (var i=0; i < json.artists.artist.length; i++) {
+		 for (var i=0; i < jsonTopArtist.artists.artist.length; i++) {
 			 //getting artist names and adding onclick to get searchArtist function
-			artistsNames[i] = `<li onclick="searchArtist('${json.artists.artist[i].name}')">${json.artists.artist[i].name}</li>`;			
+			artistsNames[i] = `<li onclick="searchArtist('${jsonTopArtist.artists.artist[i].name}')">${jsonTopArtist.artists.artist[i].name}</li>`;			
 		}
 		//sending artist names to html div that has id artists
 		document.getElementById("artists").innerHTML = artistsNames.join('');
@@ -79,15 +80,16 @@ function getAllArtists() {
 //getting songs of the albums
 function albumSongs() {
 	if (getAlbumSongs.readyState == 4 && getAlbumSongs.status==200) {
-		var json = JSON.parse(getAlbumSongs.responseText);
+		var jsonSongs = JSON.parse(getAlbumSongs.responseText);
 		var albumSongs= new Array();
 		// //results to artists as a list
-		 for (var i=0; i < json.album.tracks.length; i++) {
-			albumSongs[i] = `<li>${json.album.tracks.track[i].name}</li>`;			
+		 for (var j=0; j < jsonSongs.album.tracks.track.length; j++) {
+			albumSongs[j] = `<li>${jsonSongs.album.tracks.track[j].name}</li>`;			
 		}
 		document.getElementById("album-song").innerHTML = albumSongs.join('');
 	}
 }
+
 //getting list of top50 artists when app is opened
 var methodartistsurl = "chart.gettopartists";
 getTopArtists.onreadystatechange = getAllArtists;
@@ -117,10 +119,9 @@ function searchArtist(artist) {
 	getAlbum.send();
 }
 //function to get search albums and using that to get album tracks
-function searchAlbum(artist) {
+function searchAlbum(album, artist) {
 	var methodalbuminfo = "album.getinfo"
-	var album = document.getElementById("album").value;
-	getAlbumSongs.onreadystatechange = showResult;
+	getAlbumSongs.onreadystatechange = albumSongs;
     getAlbumSongs.open("GET",host+"?method="+methodalbuminfo+"&api_key="+apiKey+"&artist="+artist+"&album="+album+"&format=json",true);
     getAlbumSongs.send();
 }
