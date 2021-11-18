@@ -38,7 +38,7 @@ header {
   padding-bottom: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 20px;
-  margin-top: 150px;
+  margin-top: 130px;
   margin-left: 17%;
   margin-right: 7px;
 }
@@ -75,14 +75,15 @@ h4 {
   color: rgb(255, 255, 255);
   font-weight: 400;
   padding: 10px 10px 10px 10px;
+  margin-left: 1%;
 }
 
 p {
   padding-left: 100px;
   padding-right: 80px;
-  text-indent: 30px;
+  line-height: 25px;
+  margin-top: -2%;
 }
-
 
 /*input settings when input is normal*/
 input {
@@ -164,11 +165,9 @@ input.placeholder {
   left: 0;
   height: 100%;
   z-index: 1;
-  top: 0;
+  top: 94px;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding-top: 60px;
-
 }
 ::-webkit-scrollbar {
   width: 11px;
@@ -220,7 +219,7 @@ input.placeholder {
   color: rgb(55, 55, 55);
 }
 #artists {
-  margin-bottom: 100px;
+  margin-bottom: 300px;
 }
 
 #artists li {
@@ -250,9 +249,12 @@ input.placeholder {
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   margin-left: 30px;
+  margin-bottom: 5px;
+  border-radius: 100px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 @media screen and (max-width: 1100px) {

@@ -17,9 +17,32 @@ function showResult () {
 		//getting artist 
 		var resultName = "<strong>"+json.artist.name+"</strong>";
 		var resultBibliography = "<br/>"+"<br/>"+json.artist.bio.summary;
-		//lastfm does not provide pictures anymore this returns a star picture
+		//lastfm does not provide pictures anymore this returns a star picture. Just adding here to let know I know how to get pictures from api
 		var image = json.artist.image[2]["#text"];
-		document.getElementById("artist-info").innerHTML = `<h4>${resultName}</h4><img scr=${image}><p>${resultBibliography}</p>`;     
+		//fetching images from musicbrainz by using mbid provided by lastfm api code from https://github.com/hugovk/now-playing-radiator/blob/master/js/lastfm.js
+		const mbid = json.artist.mbid;
+		if (mbid) {
+		   const url = 'https://musicbrainz.org/ws/2/artist/' + mbid + '?inc=url-rels&fmt=json';
+			fetch(url)
+				.then(res => res.json())
+				.then((out) => {
+					const relations = out.relations;
+					// Find image relation
+					for (let i = 0; i < relations.length; i++) {
+						if (relations[i].type === 'image') {
+							let imageurl = relations[i].url.resource;
+							if (imageurl.startsWith('https://commons.wikimedia.org/wiki/File:')) {
+								const filename = imageurl.substring(imageurl.lastIndexOf('/') + 1);
+								imageurl = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/' + filename;
+							}
+							//if image is found returns name, image and bibliography
+							document.getElementById("artist-info").innerHTML = `<h4>${resultName}</h4><img src=${imageurl}><p>${resultBibliography}</p>`; 
+						}
+					}
+				})
+		} 
+		//if artist doesn't have a picture the function goes here and returns only name and bibliography   
+		document.getElementById("artist-info").innerHTML = `<h4>${resultName}</h4><p>${resultBibliography}</p>`; 
 	}
 	//albums of the artist
 	if (getAlbum.readyState == 4 && getAlbum.status==200) {
@@ -84,7 +107,7 @@ function sendRequest(event) {
 function searchArtist(artist) {
 	var methodartist = "artist.getinfo";
 	getArtist.onreadystatechange = showResult;
-    getArtist.open("GET",host+"?method="+methodartist+"&artist="+artist+"&autocorrect[1]"+"&api_key="+apiKey+"&format=json",true);
+    getArtist.open("GET",host+"?method="+methodartist+"&artist="+artist+"&api_key="+apiKey+"&format=json",true);
     getArtist.send();
 	
 	var methodalbums = "artist.gettopalbums";
