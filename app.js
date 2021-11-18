@@ -8,19 +8,18 @@ var getArtist = new XMLHttpRequest();
 var getAlbum = new XMLHttpRequest();
 var getTopArtists = new XMLHttpRequest();
 var getAlbumSongs = new XMLHttpRequest();
-var searchBar=document.getElementById("searchbar");
 
-//function for artist and album results
+//function for artist and album results when clicking artist name in sidecolumn or searching
 function showResult () {
-
     if (getArtist.readyState == 4 && getArtist.status==200)
 	{
 		var json = JSON.parse(getArtist.responseText);
 		//getting artist 
 		var resultName = "<strong>"+json.artist.name+"</strong>";
 		var resultBibliography = "<br/>"+"<br/>"+json.artist.bio.summary;
-		//results to artist-info as a list
-        document.getElementById("artist-info").innerHTML = "<ul>"+resultName+"</ul>"+"<ul>"+resultBibliography+"</ul>";
+		//lastfm does not provide pictures anymore this returns a star picture
+		var image = json.artist.image[2]["#text"];
+		document.getElementById("artist-info").innerHTML = `<h4>${resultName}</h4><img scr=${image}><p>${resultBibliography}</p>`;     
 	}
 	//albums of the artist
 	if (getAlbum.readyState == 4 && getAlbum.status==200) {
@@ -28,14 +27,17 @@ function showResult () {
 		//album variant
 		var albumName = new Array();
 		var i=0;
-		//getting top 10 albums of the artist. Goes through loop until i is not less than 10
+		//getting albums of the artist
 		for (var i=0; i < json.topalbums.album.length; i++)
-		{					
-			albumName[i] = `<li onclick="">${json.topalbums.album[i].name}</li>`;			
-		}	
+		{
+			//giving onclick for album name that uses searchalbum function					
+			albumName[i] = `<li onclick="searchAlbum('${json.topalbums.album[i].name}')">${json.topalbums.album[i].name}</li>`;			
+		}
+		//list of albumnames	
 		document.getElementById("album").innerHTML = albumName.join('');		
     }
 }
+
 //function to get top50 artists as list. List items can be clicked so that info of the artist opens
 function getAllArtists() {
 	if (getTopArtists.readyState == 4 && getTopArtists.status==200) {
@@ -58,46 +60,44 @@ function albumSongs() {
 		var albumSongs= new Array();
 		// //results to artists as a list
 		 for (var i=0; i < json.album.tracks.length; i++) {
-			albumSongs[i] = `<li onclick="searchAlbum('${json.album.tracks[i].name}')">${json.album.tracks[i].name}</li>`;			
+			albumSongs[i] = `<li>${json.album.tracks.track[i].name}</li>`;			
 		}
 		document.getElementById("album-song").innerHTML = albumSongs.join('');
 	}
 }
-
+//getting list of top50 artists when app is opened
 var methodartistsurl = "chart.gettopartists";
 getTopArtists.onreadystatechange = getAllArtists;
 getTopArtists.open("GET",host+"?method="+methodartistsurl+"&api_key="+apiKey+"&format=json",true);
 getTopArtists.send();
 
+//function to send request when using search bar
 function sendRequest(event) {
+	//preventing default enter to use enter as form submit as well
 	event.preventDefault();
 	var artist = document.getElementById("searchbar").value;
 	searchArtist(artist);
 	document.getElementById("searchbar").value= '';
 	return false;		
 }
-
+//function to search artists an their top albums
 function searchArtist(artist) {
 	var methodartist = "artist.getinfo";
 	getArtist.onreadystatechange = showResult;
-    getArtist.open("GET",host+"?method="+methodartist+"&artist="+artist+"&autocorrect[1]"+"&api_key="+ apiKey + "&format=json",true);
+    getArtist.open("GET",host+"?method="+methodartist+"&artist="+artist+"&autocorrect[1]"+"&api_key="+apiKey+"&format=json",true);
     getArtist.send();
 	
 	var methodalbums = "artist.gettopalbums";
 	getAlbum.onreadystatechange = showResult;
+	//getting top albums and limiting those to top10
 	getAlbum.open("GET",host+"?method="+methodalbums+"&artist="+artist+"&api_key="+apiKey+"&format=json"+"&limit=10",true);
 	getAlbum.send();
 }
-
+//function to get search albums and using that to get album tracks
 function searchAlbum(artist) {
 	var methodalbuminfo = "album.getinfo"
-	var album = albumName;
-	getAlbumInfo.onreadystatechange = showResult;
-    getAlbumInfo.open("GET",host+"?method="+methodalbuminfo+"&artist="+artist+"&album="+album+"&api_key="+ apiKey + "&format=json",true);
-    getAlbumInfo.send();
-
+	var album = document.getElementById("album").value;
 	getAlbumSongs.onreadystatechange = showResult;
-    getAlbumSongs.open("GET",host+"?method="+methodalbuminfo+"&artist="+artist+"&album="+album+"&api_key="+ apiKey + "&format=json",true);
+    getAlbumSongs.open("GET",host+"?method="+methodalbuminfo+"&api_key="+apiKey+"&artist="+artist+"&album="+album+"&format=json",true);
     getAlbumSongs.send();
-	
 }
