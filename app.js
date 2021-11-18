@@ -11,9 +11,10 @@ var getAlbumSongs = new XMLHttpRequest();
 
 //function for artist and album results when clicking artist name in sidecolumn or searching
 function showResult () {
+	document.getElementById("album-song").innerHTML = ('');
     if (getArtist.readyState == 4 && getArtist.status==200)
 	{
-		document.getElementById("album-song").innerHTML = ('');
+		
 		var jsonArtist = JSON.parse(getArtist.responseText);
 		//getting artist 
 		var resultName = "<strong>"+jsonArtist.artist.name+"</strong>";
@@ -84,9 +85,10 @@ function albumSongs() {
 		var albumSongs= new Array();
 		// //results to artists as a list
 		 for (var j=0; j < jsonSongs.album.tracks.track.length; j++) {
+			albumTitle = `<h5>${jsonSongs.album.name}<h5>`;
 			albumSongs[j] = `<li>${jsonSongs.album.tracks.track[j].name}</li>`;			
 		}
-		document.getElementById("album-song").innerHTML = albumSongs.join('');
+		document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('');
 	}
 }
 
