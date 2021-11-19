@@ -9,12 +9,12 @@ Done by Venla Kuosmanen
 
 ### First view:
 
-![artistinfoapp](https://user-images.githubusercontent.com/72703581/142617843-fc8d7a45-5328-41ea-a88e-0a966d587b10.png)
+![artistinfoapp](https://user-images.githubusercontent.com/72703581/142619568-4a3e5389-5069-41f2-8d1f-bfc796f2c6d2.png)
 
 ### Artist info and album info:
 
-![artisinfoapp2](https://user-images.githubusercontent.com/72703581/142618286-0af3a239-fc3b-40ce-aa0c-84298fd06678.png)
+![artistinfoapp2](https://user-images.githubusercontent.com/72703581/142619587-55aca232-f807-4753-9be1-54a70248b298.png)
 
 ### Song list of the selected album:
 
-![artisinfoapp3](https://user-images.githubusercontent.com/72703581/142618338-79eac0bd-b88c-4890-a1a3-6d8451787e64.png)
+![artistinfoapp3](https://user-images.githubusercontent.com/72703581/142619603-0aa7ca3d-de6a-465e-86cf-8a4dc3c0263f.png)
