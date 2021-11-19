@@ -21,7 +21,7 @@ https://quirky-jackson-fce2a8.netlify.app/
 
 ## Including
 
-1. Resposive design. App can be used with mobile device
-a. Some features do not work properly on mobile device
-2. Search feature that can be used to search artists that are not in the top 50 list
-3. Images are from musicbrainz. All artists do not have images.
+- Resposive design. App can be used with mobile device
+- Some features do not work properly on mobile device
+- Search feature that can be used to search artists that are not in the top 50 list
+- Images are from musicbrainz. All artists do not have images.
