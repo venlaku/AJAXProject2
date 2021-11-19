@@ -13,11 +13,11 @@ https://quirky-jackson-fce2a8.netlify.app/
 
 ### Artist info and album info:
 
+- Click artist on the list or search artist with search feature
+
 ![artistinfoapp2](https://user-images.githubusercontent.com/72703581/142619587-55aca232-f807-4753-9be1-54a70248b298.png)
 
 ### Song list of the selected album:
-
-- Click artist on the list or search artist with search feature
 
 ![artistinfoapp3](https://user-images.githubusercontent.com/72703581/142619603-0aa7ca3d-de6a-465e-86cf-8a4dc3c0263f.png)
 
