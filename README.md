@@ -17,6 +17,8 @@ https://quirky-jackson-fce2a8.netlify.app/
 
 ### Song list of the selected album:
 
+- Click artist on the list or search artist with search feature
+
 ![artistinfoapp3](https://user-images.githubusercontent.com/72703581/142619603-0aa7ca3d-de6a-465e-86cf-8a4dc3c0263f.png)
 
 ## Including
