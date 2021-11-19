@@ -1,6 +1,7 @@
 # Artist info application
 
 https://quirky-jackson-fce2a8.netlify.app/
+
 Done by Venla Kuosmanen
 
 
