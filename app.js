@@ -9,6 +9,10 @@ var getAlbum = new XMLHttpRequest();
 var getTopArtists = new XMLHttpRequest();
 var getAlbumSongs = new XMLHttpRequest();
 
+//eventlistener for form
+var formsubmit = document.getElementById("myform");
+formsubmit.addEventListener("submit", sendRequest);
+
 //function for artist and album results when clicking artist name in sidecolumn or searching
 function showResult () {
 	document.getElementById("album-song").innerHTML = ('');
@@ -84,13 +88,18 @@ function albumSongs() {
 		var jsonSongs = JSON.parse(getAlbumSongs.responseText);
 		var albumSongs= new Array();
 		// //results to artists as a list
+		if (jsonSongs.album.tracks != '') {
 		 for (var j=0; j < jsonSongs.album.tracks.track.length; j++) {
-			albumTitle = `<h5>${jsonSongs.album.name}<h5>`;
-			albumSongs[j] = `<li>${jsonSongs.album.tracks.track[j].name}</li>`;			
+			albumTitle = `<h5>Album name: ${jsonSongs.album.name}<h5>`;
+			albumSongs[j] = `<li><a href= ${jsonSongs.album.tracks.track[j].url}>${jsonSongs.album.tracks.track[j].name}</a></li>`;			
+		}		
+			document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('');
+		} else {
+			document.getElementById("album-song").innerHTML = "There is no album details for this album";
 		}
-		document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('');
 	}
 }
+
 
 //getting list of top50 artists when app is opened
 var methodartistsurl = "chart.gettopartists";
