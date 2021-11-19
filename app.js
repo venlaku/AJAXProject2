@@ -22,10 +22,11 @@ function showResult () {
 		var jsonArtist = JSON.parse(getArtist.responseText);
 		//getting artist 
 		var resultName = "<strong>"+jsonArtist.artist.name+"</strong>";
+		//artist bibliography summary
 		var resultBibliography = "<br/>"+"<br/>"+jsonArtist.artist.bio.summary;
 		//lastfm does not provide pictures anymore this returns a star picture. Just adding here to let know I know how to get pictures from api
 		var image = jsonArtist.artist.image[2]["#text"];
-		//fetching images from musicbrainz by using mbid provided by lastfm api code from https://github.com/hugovk/now-playing-radiator/blob/master/js/lastfm.js
+		//fetching images from musicbrainz by using mbid provided by lastfm api. Code from https://github.com/hugovk/now-playing-radiator/blob/master/js/lastfm.js
 		const mbid = jsonArtist.artist.mbid;
 		if (mbid) {
 		   const url = 'https://musicbrainz.org/ws/2/artist/' + mbid + '?inc=url-rels&fmt=json';
@@ -89,20 +90,18 @@ function albumSongs() {
 		var albumSongs= new Array();
 		// //results to artists as a list
 		for (var j=0; j < jsonSongs.album.tracks.track.length; j++) {
+			//getting album title above the tracks list
 			albumTitle = `<h5>Album name: ${jsonSongs.album.name}<h5>`;
-			albumSongs[j] = `<li><a href= ${jsonSongs.album.tracks.track[j].url} target="_blank">${jsonSongs.album.tracks.track[j].name}</a></li>`;				
+			//getting tracks of the albums. Trakcs have links to lastfm
+			albumSongs[j] = `<li><a href= ${jsonSongs.album.tracks.track[j].url} target="_blank">${jsonSongs.album.tracks.track[j].name}</a></li>`;		
+			//shows albumtitle and albumsongs as list		
 			document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('')
 		}			
 	} else {
-			document.getElementById("album-song").innerHTML = "There is no album details for this album";
-		}
-	
+		//when there is no tracks for album so the readyState and status are not 4 & 200
+		document.getElementById("album-song").innerHTML = "There is no album details for this album";
+	}
 }
-
-function openNewWindow() {
-	window.open("")
-}
-
 
 //getting list of top50 artists when app is opened
 var methodartistsurl = "chart.gettopartists";

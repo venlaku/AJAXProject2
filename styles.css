@@ -4,6 +4,7 @@ body {
   color: rgb(10, 10, 10);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+/*header settings*/
 header {
   width: 100%;
   position: fixed;        
@@ -14,13 +15,13 @@ header {
   right: 0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-
+/*search button settings*/
 #btn {
   padding: 10px;
   color: rgb(255, 255, 255);
   background: rgb(0, 0, 0);
 }
-
+/*search button hover*/
 #btn:hover {
   background-color: rgb(123, 120, 138);
   color: rgb(240, 240, 240);
@@ -81,14 +82,14 @@ h4 {
 h5 {
   font-size: 16px;
 }
-
+/*bibliography summary*/
 p {
   padding-left: 100px;
   padding-right: 80px;
   line-height: 25px;
   margin-top: -2%;
 }
-
+/*link to last fm to read more about the artist*/
 p a {
   text-decoration: underline;
 }
@@ -116,7 +117,7 @@ input:focus {
 input.placeholder {
   color: lightgray;
 }
-
+/*smaller columns Top albums and album songs*/
 .column {
   float: left;
   position: sticky;
@@ -131,6 +132,7 @@ input.placeholder {
   padding-bottom: 30px;
   margin-bottom: 20px;
 }
+/*song links*/
 a {
   padding-bottom: 10px;
   padding-top: 10px;
@@ -145,12 +147,12 @@ a:hover {
   color: grey;
   cursor: pointer;
 }
-
+/*hovering album links*/
 .column li:hover{
   color: grey;
   cursor: pointer;
 }
-
+/*album links*/
 .column li {
   padding-bottom: 10px;
   padding-top: 10px;
@@ -161,7 +163,7 @@ a:hover {
   color: #fff;
   text-decoration: none;
 }
-
+/*artist information column*/
 .column2 {
   position: sticky;
   width: 93%;
@@ -175,7 +177,7 @@ a:hover {
   padding-bottom: 20px;
   padding-top: 15px;
 }
-
+/*artist list*/
 .sidecolumn {
   float: left;
   position: fixed;
@@ -190,7 +192,7 @@ a:hover {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-
+/*custom scrollbar settings*/
 ::-webkit-scrollbar {
   width: 11px;
   height: 11px;
@@ -219,21 +221,21 @@ a:hover {
 ::-webkit-scrollbar-track:active {
   background: #333333;
 }
-
+/*row settings*/
 .row:after {
   content: "";
   display: table;
   clear: both;
   margin-right: auto;
 }
-
+/*searchbar settings*/
 #searchbar {
   padding: 10px;
   left:20%;
   top:25%;
   width:50%;
 }
-
+/*artist list settings*/
 #artists {
   margin-bottom: 300px;
 }
@@ -263,7 +265,7 @@ a:hover {
 #artist-info a:hover{
   color: rgb(129, 129, 129);
 }
-
+/*image settings*/
 img {
   width: 200px;
   margin-left: 30px;
@@ -271,8 +273,7 @@ img {
   border-radius: 100px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
-
-
+/*responsive design*/
 @media screen and (max-width: 1100px) {
   .column {
     width: 90%;

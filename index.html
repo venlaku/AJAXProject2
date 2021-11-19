@@ -3,8 +3,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Artist Info</title>
-     <!-- wanted to change favicon. Same icon is used later -->
+     <!--favicon -->
     <link rel="shortcut icon" type="image/png" href="icons8-musical-notes-40.png"/>
+    <!--fontawesome for search button icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- my css stylesheet -->
     <link rel="stylesheet" href="styles.css" type="text/css">    
@@ -13,26 +14,23 @@
     <header>
       <h1>Artist Info</h1>
     </header>
-
     <div class = "sidecolumn">
       <h2>Top 50 Artists</h2>
       <div id="artists"></div>
     </div>
-
      <!-- container that has most of the applications components-->
 			<div class = "container">
         <form id="myform">
           <input type="text" placeholder="Enter artist name" id="searchbar"/>
           <button id="btn" type="submit"> <i class="fa fa-search"></i></button>
         </form>
-
-        <div class ="row">
-				
+        <!-- first row that has bigger column-->
+        <div class ="row">			
 				<div class = "column2">
 					<h3>Artist Information</h3>
 					<div id="artist-info"></div>
 				</div>
-		
+		    <!-- smaller columns-->
         <div class ="row">
 				<div class = "column">
 					<h3>Top 10 Albums</h3>
@@ -45,13 +43,7 @@
 				</div> 		
 			</div>
     </div>
-
-
-
-
-    
     <!-- My javascript -->
     <script type="text/javascript" src="app.js"></script>
-
   </body>
 </html>
