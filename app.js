@@ -98,8 +98,8 @@ function albumSongs() {
 			document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('')
 		}			
 	} else {
-		//when there is no tracks for album so the readyState and status are not 4 & 200
-		document.getElementById("album-song").innerHTML = "There is no album details for this album";
+		//returns empty when album info isn't found
+		document.getElementById("album-song").innerHTML = "";
 	}
 }
 

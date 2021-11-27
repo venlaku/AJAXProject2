@@ -160,7 +160,7 @@ a:hover {
   list-style: decimal;
   font-weight: 200;
   padding-left: 10px;
-  color: #fff;
+  color: rgb(238, 238, 238);
   text-decoration: none;
 }
 /*artist information column*/
@@ -259,7 +259,7 @@ a:hover {
 }
 
 #artist-info a{
-  color: #fff;
+  color: rgb(228, 228, 228);
 }
 
 #artist-info a:hover{
