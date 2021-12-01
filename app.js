@@ -89,17 +89,22 @@ function albumSongs() {
 		var jsonSongs = JSON.parse(getAlbumSongs.responseText);
 		var albumSongs= new Array();
 		// //results to artists as a list
-		for (var j=0; j < jsonSongs.album.tracks.track.length; j++) {
-			//getting album title above the tracks list
-			albumTitle = `<h5>Album name: ${jsonSongs.album.name}<h5>`;
-			//getting tracks of the albums. Trakcs have links to lastfm
-			albumSongs[j] = `<li><a href= ${jsonSongs.album.tracks.track[j].url} target="_blank">${jsonSongs.album.tracks.track[j].name}</a></li>`;		
-			//shows albumtitle and albumsongs as list		
-			document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('')
+		if (jsonSongs.album.tracks != null) {
+			for (var j=0; j < jsonSongs.album.tracks.track.length; j++) {
+				//getting album title above the tracks list
+				albumTitle = `<h5>Album name: ${jsonSongs.album.name}<h5>`;
+				//getting tracks of the albums. Trakcs have links to lastfm
+				albumSongs[j] = `<li><a href= ${jsonSongs.album.tracks.track[j].url} target="_blank">${jsonSongs.album.tracks.track[j].name}</a></li>`;		
+				//shows albumtitle and albumsongs as list		
+				document.getElementById("album-song").innerHTML = albumTitle + albumSongs.join('')
+			}
+		} else {
+			//if there is no songs in album data for the album returns this
+			document.getElementById("album-song").innerHTML = "No songs for this album";
 		}			
-	} else {
-		//returns empty when album info isn't found
-		document.getElementById("album-song").innerHTML = "";
+	} else if (getAlbumSongs.readyState != 4){
+		//if there is no necessary data to get song info like it is missing track names returns this
+		document.getElementById("album-song").innerHTML = "Wait... <br><br> if nothing happens this album does not have tracks to show";
 	}
 }
 
